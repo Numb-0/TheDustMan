@@ -1,4 +1,5 @@
 import pygame
+from Path import PATH
 from TrashTypes import TrashType
 
 IMAGE_SIZE = (200, 200)
@@ -15,7 +16,7 @@ class Trash():
         # i inserted it here to make it more clear
         # i dont think it is a problem?
         global PLASTIC_SPRITE
-        PLASTIC_SPRITE = pygame.image.load("apple.png").convert_alpha()
+        PLASTIC_SPRITE = pygame.image.load(PATH + "Assets/Sprites/Apple.png")
 
 
 class PlasticTrash(Trash, pygame.sprite.Sprite):

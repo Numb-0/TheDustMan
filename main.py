@@ -1,5 +1,4 @@
 import pygame
-import sys
 from TrashObjects import IMAGE_SIZE, PlasticTrash, Trash
 
 pygame.init()
@@ -35,8 +34,7 @@ TIMER_LIMIT = 0.5
 
 while running:
     dt = clock.tick(FPS) / 1000
-    print(dt_timer)
-    #print(clock.get_fps())
+    print(clock.get_fps())
     # checking for events
     dt_timer += timer_clock.tick() /1000
 
@@ -61,9 +59,6 @@ while running:
             trash1.rect.move_ip(-300, 0)
         counting_clicks = False
     
-
-            
-            
     # Refreshing screen to clean last frame
     screen.fill("purple")
 
@@ -77,4 +72,3 @@ while running:
     pygame.display.flip()
 
 pygame.quit()
-sys.exit()
