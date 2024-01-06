@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://pksqwf52vqg8"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_logn4"]
+[ext_resource type="LabelSettings" uid="uid://c0mmrd0i0tgrh" path="res://gamefont.tres" id="2_wenpg"]
+[ext_resource type="PackedScene" uid="uid://dxqv8v8p1ioyl" path="res://Scenes/trash_bio.tscn" id="4_io26b"]
+[ext_resource type="PackedScene" uid="uid://qsijeds8o027" path="res://Scenes/trashbin.tscn" id="4_ovhg1"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_logn4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -29.0
+offset_top = -25.0
+offset_right = 1189.0
+offset_bottom = 675.0
+color = Color(0.113725, 0.411765, 0.588235, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="pointslabel" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 166.0
+offset_bottom = 57.0
+text = "Points: 0"
+label_settings = ExtResource("2_wenpg")
+
+[node name="trashbin" parent="." instance=ExtResource("4_ovhg1")]
+position = Vector2(1004, 387)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1001, 152)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-1020.97, 276, -821, 438, -269, 435, 263, 344, 265, 133, 338, 508, -1080, 497, -1078, 35)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-1020.97, 276, -821, 438, -269, 435, 263, 344, 265, 133, 338, 508, -1080, 497, -1078, 35)
+
+[node name="trashBio" parent="." instance=ExtResource("4_io26b")]
+position = Vector2(1001, 152)
+
+[node name="trashBio2" parent="." instance=ExtResource("4_io26b")]
+position = Vector2(409, 262)
+
+[connection signal="update_points" from="trashbin" to="." method="_on_trashbin_update_points"]

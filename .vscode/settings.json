@@ -1,5 +1,0 @@
-{
-    "python.analysis.autoImportCompletions": false,
-    "python.defaultInterpreterPath": "opt/local/bin/Python3.11",
-    "python.analysis.typeCheckingMode": "off"
-}
