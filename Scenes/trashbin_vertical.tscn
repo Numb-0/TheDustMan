@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyixyrwr4b0xr"]
+
+[ext_resource type="Script" path="res://Scripts/trashbin_vertical.gd" id="1_mluex"]
+[ext_resource type="Texture2D" uid="uid://bqymbva52qx35" path="res://Assets/Sprites/trash_bin_blue.png.png" id="2_ej1dy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yadcd"]
+size = Vector2(25.2, 27.4)
+
+[node name="trashbinVertical" type="Area2D"]
+script = ExtResource("1_mluex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.999999, 7.5)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_yadcd")
+
+[node name="Bin" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_ej1dy")

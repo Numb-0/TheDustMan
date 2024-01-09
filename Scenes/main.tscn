@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://pksqwf52vqg8"]
+[gd_scene load_steps=6 format=3 uid="uid://pksqwf52vqg8"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_logn4"]
 [ext_resource type="LabelSettings" uid="uid://c0mmrd0i0tgrh" path="res://gamefont.tres" id="2_wenpg"]
 [ext_resource type="PackedScene" uid="uid://dxqv8v8p1ioyl" path="res://Scenes/trash_bio.tscn" id="4_io26b"]
 [ext_resource type="PackedScene" uid="uid://qsijeds8o027" path="res://Scenes/trashbin.tscn" id="4_ovhg1"]
+[ext_resource type="PackedScene" uid="uid://re2q6af1j7h5" path="res://Scenes/radial_spawner.tscn" id="5_1d7cn"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_logn4")
@@ -31,16 +32,25 @@ label_settings = ExtResource("2_wenpg")
 position = Vector2(1001, 152)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-1020.97, 276, -821, 438, -269, 435, 263, 344, 265, 133, 338, 508, -1080, 497, -1078, 35)
+polygon = PackedVector2Array(-1002, 497, 156, 496, 152, -600, 346, 662, -1219, 647, -1004, -600)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(20, 165)
+scale = Vector2(1, 1.24142)
+polygon = PackedVector2Array(-1100, -600, 340, -600, 340, -730, -1100, -730)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-1020.97, 276, -821, 438, -269, 435, 263, 344, 265, 133, 338, 508, -1080, 497, -1078, 35)
+polygon = PackedVector2Array(-1002, 497, 156, 496, 154, -147, 346, 662, -1219, 647, -1001, -165)
 
 [node name="trashbin" parent="." instance=ExtResource("4_ovhg1")]
-position = Vector2(1004, 387)
+position = Vector2(155, 168)
 
 [node name="trashBio3" parent="." instance=ExtResource("4_io26b")]
 position = Vector2(323, 360)
 
 [node name="trashBio2" parent="." instance=ExtResource("4_io26b")]
-position = Vector2(646, 394)
+position = Vector2(792, 307)
+
+[node name="RadialSpawner" parent="." instance=ExtResource("5_1d7cn")]
+position = Vector2(583, -190)
+spawn_radius = 200.0

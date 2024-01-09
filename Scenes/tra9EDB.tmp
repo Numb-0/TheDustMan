@@ -4,12 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://cbe73e5456gsa" path="res://Assets/Sprites/Apple.png" id="2_v2i6o"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4a2jh"]
-bounce = 0.7
 
 [node name="trashBio" type="RigidBody2D"]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_4a2jh")
-continuous_cd = 2
+continuous_cd = 1
 freeze_mode = 1
 script = ExtResource("1_4bhnj")
 
@@ -18,4 +17,4 @@ scale = Vector2(5, 5)
 texture = ExtResource("2_v2i6o")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-28, 13, -28, -4, -16, -18, 1, -24, 19, -19, 33, -3, 33, 15, 22, 39, -17, 40)
+polygon = PackedVector2Array(-30, 16, -26, -3, -16, -18, 1, -20, 19, -19, 33, -3, 33, 19, 19, 39, -20, 39)
