@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://pksqwf52vqg8"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_logn4"]
+[ext_resource type="Texture2D" uid="uid://vcfeolbpl6vs" path="res://Assets/AppImages/the dustman_sfondo gioco.png" id="2_h4v6c"]
+[ext_resource type="LabelSettings" uid="uid://c0mmrd0i0tgrh" path="res://gamefont.tres" id="2_wenpg"]
+[ext_resource type="PackedScene" uid="uid://dxqv8v8p1ioyl" path="res://Scenes/trash_bio.tscn" id="4_io26b"]
+[ext_resource type="PackedScene" uid="uid://re2q6af1j7h5" path="res://Scenes/radial_spawner.tscn" id="5_1d7cn"]
+[ext_resource type="PackedScene" uid="uid://k8mbg6d80r8p" path="res://Scenes/trash_alu.tscn" id="6_fkmjo"]
+[ext_resource type="PackedScene" uid="uid://dd0j48wy547w" path="res://Scenes/trash_bin_bio.tscn" id="7_xrqul"]
+[ext_resource type="PackedScene" uid="uid://smd0nj71x53d" path="res://Scenes/trash_bin_alu.tscn" id="8_38wu4"]
+[ext_resource type="Texture2D" uid="uid://c0msf5p53qadv" path="res://Assets/Ui/Leaf.svg" id="9_8ckx4"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_logn4")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 651.0
+texture = ExtResource("2_h4v6c")
+expand_mode = 1
+
+[node name="pointslabel" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 166.0
+offset_bottom = 64.0
+text = "Points: 0"
+label_settings = ExtResource("2_wenpg")
+
+[node name="healthpoints" type="CanvasLayer" parent="."]
+
+[node name="Leaf1" type="TextureRect" parent="healthpoints"]
+offset_left = 1094.0
+offset_top = 15.0
+offset_right = 1141.26
+offset_bottom = 98.0
+texture = ExtResource("9_8ckx4")
+expand_mode = 3
+
+[node name="Leaf2" type="TextureRect" parent="healthpoints"]
+offset_left = 1032.0
+offset_top = 16.0
+offset_right = 1079.26
+offset_bottom = 99.0
+texture = ExtResource("9_8ckx4")
+expand_mode = 3
+
+[node name="Leaf3" type="TextureRect" parent="healthpoints"]
+offset_left = 970.0
+offset_top = 16.0
+offset_right = 1017.26
+offset_bottom = 99.0
+texture = ExtResource("9_8ckx4")
+expand_mode = 3
+
+[node name="Leaf4" type="TextureRect" parent="healthpoints"]
+offset_left = 905.0
+offset_top = 16.0
+offset_right = 952.264
+offset_bottom = 99.0
+texture = ExtResource("9_8ckx4")
+expand_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1001, 152)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-1002, 495, 153, 495, 152, -600, 346, 660, -1222, 660, -1004, -600)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(20, 165)
+scale = Vector2(1, 1.24142)
+polygon = PackedVector2Array(-1100, -600, 340, -600, 340, -730, -1100, -730)
+
+[node name="trashBio3" parent="." instance=ExtResource("4_io26b")]
+position = Vector2(217, 412)
+
+[node name="trashBio2" parent="." instance=ExtResource("4_io26b")]
+position = Vector2(602, 389)
+
+[node name="RadialSpawner" parent="." instance=ExtResource("5_1d7cn")]
+position = Vector2(583, -190)
+spawn_radius = 200.0
+
+[node name="trashAlu" parent="." instance=ExtResource("6_fkmjo")]
+position = Vector2(379, 240)
+
+[node name="AnimatedBin" parent="." instance=ExtResource("7_xrqul")]
+position = Vector2(1059, 239)
+
+[node name="AnimatedBin2" parent="." instance=ExtResource("8_38wu4")]
+position = Vector2(1057, 490)

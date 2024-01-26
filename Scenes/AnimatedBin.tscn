@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjp8qq8akbptx"]
+
+[ext_resource type="Texture2D" uid="uid://csqssnsb0c830" path="res://Assets/Sprites/Bins/cassonettiBio.png" id="1_wwr4r"]
+[ext_resource type="Script" path="res://Scripts/animated_bin.gd" id="1_wx1if"]
+[ext_resource type="AudioStream" uid="uid://bykse3juwx6fu" path="res://Assets/Sounds/money_001.wav" id="3_6jw8r"]
+[ext_resource type="AudioStream" uid="uid://dlc3ummj1ma6n" path="res://Assets/Sounds/trash_bin_noise.mp3" id="3_tuh8j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15u4n"]
+size = Vector2(105, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67thd"]
+atlas = ExtResource("1_wwr4r")
+region = Rect2(0, 0, 303, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fqdx"]
+atlas = ExtResource("1_wwr4r")
+region = Rect2(0, 475, 303, 475)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bukl2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fqdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67thd")
+}],
+"loop": false,
+"name": &"Fill",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67thd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="AnimatedBin" type="Area2D"]
+script = ExtResource("1_wx1if")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_15u4n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_bukl2")
+animation = &"Fill"
+
+[node name="PositiveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6jw8r")
+
+[node name="NegativeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tuh8j")

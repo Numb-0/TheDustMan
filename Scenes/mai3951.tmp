@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://pksqwf52vqg8"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_logn4"]
+[ext_resource type="Texture2D" uid="uid://vcfeolbpl6vs" path="res://Assets/AppImages/the dustman_sfondo gioco.png" id="2_h4v6c"]
+[ext_resource type="LabelSettings" uid="uid://c0mmrd0i0tgrh" path="res://gamefont.tres" id="2_wenpg"]
+[ext_resource type="PackedScene" uid="uid://re2q6af1j7h5" path="res://Scenes/radial_spawner.tscn" id="5_1d7cn"]
+[ext_resource type="PackedScene" uid="uid://dd0j48wy547w" path="res://Scenes/trash_bin_bio.tscn" id="7_xrqul"]
+[ext_resource type="PackedScene" uid="uid://smd0nj71x53d" path="res://Scenes/trash_bin_alu.tscn" id="8_38wu4"]
+[ext_resource type="Texture2D" uid="uid://c0msf5p53qadv" path="res://Assets/Ui/Leaf.svg" id="9_8ckx4"]
+[ext_resource type="PackedScene" uid="uid://cut4br3oyvlp3" path="res://Scenes/trash_bin_paper.tscn" id="10_k8wdb"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_logn4")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="UiNode" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="UILayer/UiNode"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_right = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_h4v6c")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="pointslabel" type="Label" parent="UILayer/UiNode"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.040625
+anchor_right = 0.152778
+anchor_bottom = 0.06875
+offset_left = 50.0
+offset_top = -28.0
+offset_right = 195.0
+offset_bottom = 24.0
+text = "Points: 0"
+label_settings = ExtResource("2_wenpg")
+metadata/_edit_use_anchors_ = true
+
+[node name="lives" type="HBoxContainer" parent="UILayer/UiNode"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -331.0
+offset_top = 50.0
+offset_bottom = 168.0
+grow_horizontal = 0
+
+[node name="Leaf1" type="TextureRect" parent="UILayer/UiNode/lives"]
+layout_mode = 2
+texture = ExtResource("9_8ckx4")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Leaf2" type="TextureRect" parent="UILayer/UiNode/lives"]
+layout_mode = 2
+texture = ExtResource("9_8ckx4")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Leaf3" type="TextureRect" parent="UILayer/UiNode/lives"]
+layout_mode = 2
+texture = ExtResource("9_8ckx4")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Leaf4" type="TextureRect" parent="UILayer/UiNode/lives"]
+layout_mode = 2
+texture = ExtResource("9_8ckx4")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(162, 64)
+polygon = PackedVector2Array(-160, -700, -160, 2700, -1200, 2700, -1200, -700)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(2288, 45)
+polygon = PackedVector2Array(-160, -700, -160, 2700, -1200, 2700, -1200, -700)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(1598, 3123)
+rotation = 1.5708
+polygon = PackedVector2Array(-160, -700, -160, 2700, -1200, 2700, -1200, -700)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(1622, 157)
+rotation = 1.5708
+polygon = PackedVector2Array(-160, -700, -160, 2700, -1200, 2700, -1200, -700)
+
+[node name="RadialSpawner" parent="." instance=ExtResource("5_1d7cn")]
+position = Vector2(379, 894)
+spawn_radius = 200.0
+
+[node name="AnimatedBin" parent="." instance=ExtResource("7_xrqul")]
+position = Vector2(235, 401)
+
+[node name="AnimatedBin2" parent="." instance=ExtResource("8_38wu4")]
+position = Vector2(548, 400)
+
+[node name="AnimatedBin3" parent="." instance=ExtResource("10_k8wdb")]
+position = Vector2(861, 398)

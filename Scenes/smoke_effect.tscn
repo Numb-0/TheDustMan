@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2dvme1vcnfnk"]
+
+[ext_resource type="Texture2D" uid="uid://bgn813bar0pvg" path="res://Assets/Particles/smoke_06.png" id="6_81df0"]
+[ext_resource type="Script" path="res://Scripts/smoke_effect.gd" id="6_joe0d"]
+[ext_resource type="Texture2D" uid="uid://bv5hh1je8bu0x" path="res://Assets/Particles/smoke_07.png" id="7_juqdi"]
+[ext_resource type="Texture2D" uid="uid://ch6kcs47glwhe" path="res://Assets/Particles/smoke_08.png" id="8_brefo"]
+[ext_resource type="Texture2D" uid="uid://d1t0nnahceg4n" path="res://Assets/Particles/smoke_09.png" id="9_d5pt3"]
+[ext_resource type="Texture2D" uid="uid://4wh5yfwx266g" path="res://Assets/Particles/smoke_10.png" id="10_a044f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vuwki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_81df0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_juqdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_brefo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d5pt3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a044f")
+}],
+"loop": true,
+"name": &"smoke",
+"speed": 8.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_vuwki")
+animation = &"smoke"
+frame_progress = 0.502315
+script = ExtResource("6_joe0d")

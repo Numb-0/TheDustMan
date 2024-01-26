@@ -4,7 +4,8 @@ extends RigidBody2D
 @export var trash_points : int = 0
 
 @onready var trash_sprite = $Sprite2D
-@onready var trash_shape = $CollisionPolygon2D
+const smoke_effect = preload("res://Scenes/smoke_effect.tscn")
+#@onready var trash_shape = $CollisionPolygon2D
 
 var held = false
 var calculated_drag_offset = false
@@ -20,7 +21,7 @@ func _ready():
 	linear_damp = 1
 	# setting timer parameters
 	add_child(death_timer)
-	death_timer.wait_time = 1
+	death_timer.wait_time = 0.1
 	death_timer.one_shot = true
 	death_timer.timeout.connect(_on_death_timer_end)
 
@@ -37,19 +38,23 @@ func _on_input_event(_viewport, event, _shape_idx):
 		
 		
 func _on_entering_bin(body):
-	body.entering_bin = true
-	# we start the timer here since we need to call it once
+	var smoke_particle_effect = smoke_effect.instantiate()
+	#smoke_particle_effect.position = position
+	body.add_child(smoke_particle_effect)
 	body.death_timer.start()
+	#body.entering_bin = true
+	# we start the timer here since we need to call it once
+	#body.death_timer.start()
 	
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	if held:
 		if not calculated_drag_offset:
 			offset = global_transform.origin - get_global_mouse_position()
 			calculated_drag_offset = true
 		global_transform.origin = get_global_mouse_position() + offset
-	if entering_bin:
-		fade_off_shrink(delta)
+	#if entering_bin:
+	#	fade_off_shrink(delta)
 		
 		
 func pickup():
@@ -64,13 +69,14 @@ func drop(impulse = Vector2.ZERO):
 		freeze = false
 		apply_central_impulse(impulse)
 		# scaling velocity to not bug collision detection
-		linear_velocity *= 0.5
+		linear_velocity *= 0.7
 		held = false
 		calculated_drag_offset = false
 		
+		
 func remove_from_held():
 	if held:
-		freeze = false
+		#freeze = false
 		held = false
 		calculated_drag_offset = false
 		

@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2cw7ggf68lwd"]
+
+[ext_resource type="Script" path="res://Scripts/menu_control.gd" id="1_drl3a"]
+[ext_resource type="LabelSettings" uid="uid://c0mmrd0i0tgrh" path="res://gamefont.tres" id="2_lpcbu"]
+[ext_resource type="Texture2D" uid="uid://d0ndschp3q2o1" path="res://Assets/AppImages/sfondo app_the DUSTMAN.png" id="2_oksej"]
+[ext_resource type="Texture2D" uid="uid://ckxamxvi41k7j" path="res://Assets/Sprites/Buttons/StartButton.svg" id="4_gpdw4"]
+[ext_resource type="Texture2D" uid="uid://drhgrlwih761q" path="res://Assets/Sprites/Buttons/PauseButton.svg" id="5_wbsgr"]
+[ext_resource type="Texture2D" uid="uid://cgwma4e3xfov2" path="res://Assets/Sprites/Buttons/QuitButton.svg" id="6_kpm67"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="MenuLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_drl3a")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="MenuLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oksej")
+expand_mode = 4
+
+[node name="high_score_label" type="Label" parent="MenuLayer/Control"]
+layout_mode = 1
+offset_right = 195.0
+offset_bottom = 106.0
+text = "score"
+label_settings = ExtResource("2_lpcbu")
+horizontal_alignment = 1
+
+[node name="MenuContainer" type="VBoxContainer" parent="MenuLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -423.5
+offset_top = -251.0
+offset_right = 423.5
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="start_button" type="TextureButton" parent="MenuLayer/Control/MenuContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_gpdw4")
+stretch_mode = 0
+
+[node name="option_button" type="TextureButton" parent="MenuLayer/Control/MenuContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_wbsgr")
+stretch_mode = 0
+
+[node name="quit_button" type="TextureButton" parent="MenuLayer/Control/MenuContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_kpm67")
+stretch_mode = 0
