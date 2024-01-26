@@ -1,7 +1,6 @@
 extends AudioStreamPlayer
 
 
-
 func _ready():
 	finished.connect(_on_finished_audio)
 	autoplay = true

@@ -16,7 +16,7 @@ func load_scenes():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			print(file_name)
+			#print(file_name)
 			# Check if the file is a scene file
 			if file_name.ends_with("tscn"):
 				# Load the scene

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://2oe2i2dfthnt"]
 
-[ext_resource type="Script" path="res://Scripts/trash_alu.gd" id="1_pr3os"]
+[ext_resource type="Script" path="res://Scripts/trash_paper.gd" id="1_5dvmt"]
 [ext_resource type="Texture2D" uid="uid://dpnaqcgchwkfy" path="res://Assets/Sprites/Trashes/paper1.png" id="2_r6b3e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_66xhv"]
@@ -14,7 +14,7 @@ input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_66xhv")
 continuous_cd = 2
 freeze_mode = 1
-script = ExtResource("1_pr3os")
+script = ExtResource("1_5dvmt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 7)

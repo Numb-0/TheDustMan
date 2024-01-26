@@ -30,14 +30,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -420.0
-offset_right = 420.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_h4v6c")
 expand_mode = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="pointslabel" type="Label" parent="UILayer/UiNode"]
 layout_mode = 1
