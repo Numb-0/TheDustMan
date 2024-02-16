@@ -1,17 +1,76 @@
-[gd_scene load_steps=10 format=3 uid="uid://pksqwf52vqg8"]
+[gd_scene load_steps=12 format=3 uid="uid://pksqwf52vqg8"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_logn4"]
 [ext_resource type="Texture2D" uid="uid://vcfeolbpl6vs" path="res://Assets/AppImages/the dustman_sfondo gioco.png" id="2_h4v6c"]
-[ext_resource type="LabelSettings" uid="uid://c0mmrd0i0tgrh" path="res://gamefont.tres" id="2_wenpg"]
-[ext_resource type="PackedScene" uid="uid://re2q6af1j7h5" path="res://Scenes/radial_spawner.tscn" id="5_1d7cn"]
+[ext_resource type="Theme" uid="uid://ckug1xsi8idn6" path="res://option_buttons_theme.tres" id="4_b6rj7"]
 [ext_resource type="PackedScene" uid="uid://dd0j48wy547w" path="res://Scenes/trash_bin_bio.tscn" id="7_xrqul"]
 [ext_resource type="PackedScene" uid="uid://smd0nj71x53d" path="res://Scenes/trash_bin_alu.tscn" id="8_38wu4"]
 [ext_resource type="Texture2D" uid="uid://c0msf5p53qadv" path="res://Assets/Ui/Leaf.svg" id="9_8ckx4"]
 [ext_resource type="PackedScene" uid="uid://44vrxi783mk3" path="res://Scenes/directional_spawner.tscn" id="9_td5t8"]
 [ext_resource type="PackedScene" uid="uid://cut4br3oyvlp3" path="res://Scenes/trash_bin_paper.tscn" id="10_k8wdb"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_xc2ex"]
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1hf5"]
+font_size = 65
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7lqkk"]
+bounce = 0.23
+
 [node name="main" type="Node2D"]
 script = ExtResource("1_logn4")
+
+[node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" type="Control" parent="PauseMenuCanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_b6rj7")
+
+[node name="UnpauseButton" type="Button" parent="PauseMenuCanvas/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -60.0
+offset_right = 169.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unpause"
+icon_alignment = 1
+
+[node name="RestartButton" type="Button" parent="PauseMenuCanvas/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = 90.0
+offset_right = 169.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+icon_alignment = 1
+
+[node name="QuitButton" type="Button" parent="PauseMenuCanvas/PauseMenu"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 1200.0
+offset_right = 709.0
+offset_bottom = 1332.0
+text = "Quit"
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -39,15 +98,12 @@ expand_mode = 2
 [node name="pointslabel" type="Label" parent="UILayer/UiNode"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.040625
-anchor_right = 0.152778
-anchor_bottom = 0.06875
-offset_left = 50.0
-offset_top = -28.0
-offset_right = 195.0
-offset_bottom = 24.0
-text = "Points: 0"
-label_settings = ExtResource("2_wenpg")
+offset_left = 43.0
+offset_top = 102.0
+offset_right = 89.0
+offset_bottom = 212.0
+text = "0"
+label_settings = SubResource("LabelSettings_xc2ex")
 metadata/_edit_use_anchors_ = true
 
 [node name="lives" type="HBoxContainer" parent="UILayer/UiNode"]
@@ -55,9 +111,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -331.0
-offset_top = 50.0
-offset_bottom = 168.0
+offset_left = -326.0
+offset_top = 91.0
+offset_right = 5.0
+offset_bottom = 209.0
 grow_horizontal = 0
 
 [node name="Leaf1" type="TextureRect" parent="UILayer/UiNode/lives"]
@@ -84,7 +141,41 @@ texture = ExtResource("9_8ckx4")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
+[node name="PauseButton" type="Button" parent="UILayer/UiNode"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -171.0
+offset_bottom = 89.0
+grow_horizontal = 0
+theme = ExtResource("4_b6rj7")
+theme_override_font_sizes/font_size = 30
+text = "Pause"
+icon_alignment = 1
+expand_icon = true
+
+[node name="TutorialText" type="Label" parent="UILayer/UiNode"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -106.5
+offset_right = 413.0
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ricicla i rifiuti nel modo giusto per 
+accumulare punti ma attento
+ a non sbagliare !!"
+label_settings = SubResource("LabelSettings_p1hf5")
+horizontal_alignment = 1
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_7lqkk")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(162, 64)
@@ -104,12 +195,13 @@ position = Vector2(1622, 157)
 rotation = 1.5708
 polygon = PackedVector2Array(-160, -700, -160, 2700, -1200, 2700, -1200, -700)
 
-[node name="RadialSpawner" parent="." instance=ExtResource("5_1d7cn")]
-position = Vector2(379, 894)
-spawn_radius = 200.0
-
 [node name="DirectionalSpawner" parent="." instance=ExtResource("9_td5t8")]
-position = Vector2(135, 923)
+position = Vector2(135, 900)
+spawn_direction = Vector2(700, 0)
+
+[node name="DirectionalSpawner2" parent="." instance=ExtResource("9_td5t8")]
+position = Vector2(915, 1700)
+spawn_direction = Vector2(-700, 0)
 
 [node name="AnimatedBin" parent="." instance=ExtResource("7_xrqul")]
 position = Vector2(235, 401)

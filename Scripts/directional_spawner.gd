@@ -5,7 +5,7 @@ signal spawned(spawn)
 var spawnable_path = "res://Scenes/Spawnable/"
 var spawnable_array = []
 
-@export var spawn_direction : Vector2 = Vector2(200,100)
+@export var spawn_direction : Vector2
 
 func _ready():
 	load_scenes()

@@ -17,7 +17,7 @@ var death_timer = Timer.new()
 func _ready():
 	add_to_group("pickable")
 	input_event.connect(_on_input_event)
-	Global.trash_entering_bin.connect(_on_entering_bin)
+	Global.trash_entering_bin.connect(_on_trash_entering_bin)
 	linear_damp = 1
 	# setting timer parameters
 	add_child(death_timer)
@@ -37,7 +37,8 @@ func _on_input_event(_viewport, event, _shape_idx):
 			Global.trash_clicked.emit(self)
 		
 		
-func _on_entering_bin(body):
+func _on_trash_entering_bin(body):
+	body.get_child(0).queue_free()
 	var smoke_particle_effect = smoke_effect.instantiate()
 	#smoke_particle_effect.position = position
 	body.add_child(smoke_particle_effect)
@@ -85,5 +86,4 @@ func fade_off_shrink(delta):
 	trash_sprite.scale += 3 * -Vector2(delta, delta)
 	trash_sprite.modulate.a8 += -delta * 100
 	angular_velocity = 5
-	# it works lol
 

@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://re2q6af1j7h5"]
+[gd_scene load_steps=2 format=3 uid="uid://re2q6af1j7h5"]
 
 [ext_resource type="Script" path="res://Scripts/radial_spawner.gd" id="1_1riox"]
-[ext_resource type="PackedScene" uid="uid://dxqv8v8p1ioyl" path="res://Scenes/Spawnable/trash_bio.tscn" id="2_q3h6b"]
 
 [node name="RadialSpawner" type="Marker2D"]
 script = ExtResource("1_1riox")
 spawn_radius = 300.0
-spawn_object_scene = ExtResource("2_q3h6b")

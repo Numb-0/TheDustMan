@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmlxq5fr27dg2"]
+
+[ext_resource type="Script" path="res://Scripts/trash_bio.gd" id="1_xnecy"]
+[ext_resource type="Texture2D" uid="uid://din4gqnlpl3up" path="res://Assets/Sprites/Trashes/Pesce.svg" id="2_747w0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4a2jh"]
+bounce = 0.7
+
+[node name="trashBio" type="RigidBody2D"]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_4a2jh")
+continuous_cd = 2
+freeze_mode = 1
+script = ExtResource("1_xnecy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_747w0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-79, 5, 23, -98, 106, -97, 131, -78, 122, -44, 75, 2, -42, 49, -77, 102, -135, 13)

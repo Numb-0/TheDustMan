@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cbtuch73qkw4y" path="res://Assets/Sprites/Trashes/Wine.svg" id="2_dejs6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_66xhv"]
-bounce = 0.7
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibj0e"]
 size = Vector2(15.6, 46)
@@ -12,8 +11,8 @@ size = Vector2(15.6, 46)
 [node name="trashAlu" type="RigidBody2D"]
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_66xhv")
-continuous_cd = 2
 freeze_mode = 1
+continuous_cd = 2
 script = ExtResource("1_u4bjs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

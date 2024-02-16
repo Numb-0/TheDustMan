@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b45e0njagt0it"]
+
+[ext_resource type="Texture2D" uid="uid://cg2hecn0t2ggq" path="res://Assets/Sprites/Overlays/Cross.svg" id="1_rdtq3"]
+[ext_resource type="Script" path="res://Scripts/cross_effect.gd" id="2_l2abv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nn4lt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rdtq3")
+}],
+"loop": false,
+"name": &"cross",
+"speed": 2.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_nn4lt")
+animation = &"cross"
+script = ExtResource("2_l2abv")

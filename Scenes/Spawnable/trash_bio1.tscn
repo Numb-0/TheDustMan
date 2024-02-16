@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://w6ufjp4g1hm"]
+
+[ext_resource type="Script" path="res://Scripts/trash_bio.gd" id="1_xnecy"]
+[ext_resource type="Texture2D" uid="uid://cyftp7w2rr2m1" path="res://Assets/Sprites/Trashes/Banana.svg" id="2_ro2q4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_soevg"]
+
+[node name="trashBio" type="RigidBody2D"]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_soevg")
+freeze_mode = 1
+continuous_cd = 2
+script = ExtResource("1_xnecy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ro2q4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-82, 17, -14, -1, 10, -32, 19, -71, 35, -51, 25, -25, 43, 9, 94, 20, 63, 40, 99, 62, 76, 74, 25, 49, 4, 43, -50, 68, -100, 62, -54, 35)

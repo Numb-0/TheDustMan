@@ -3,6 +3,7 @@ extends Area2D
 @onready var bin_sprite = $AnimatedSprite2D
 @onready var bin_sound_positive = $PositiveSound
 @onready var bin_sound_negative = $NegativeSound
+const cross_effect = preload("res://Scenes/cross_effect.tscn")
 
 @export var trash_type : String = ""
 
@@ -29,6 +30,8 @@ func _on_body_entered(body):
 		Global.update_points.emit(body.trash_points)
 	else:
 		# we use negative point to make the game know it was a bad differentiation
+		var cross_effect_overlay = cross_effect.instantiate()
+		add_child(cross_effect_overlay)
 		Global.update_points.emit(-1 * body.trash_points)
 		bin_sound_negative.play()
 		

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cvspf4xjenj4p"]
+
+[ext_resource type="StyleBox" uid="uid://d2gkdcvg6ish5" path="res://score_style_box.tres" id="1_6gf4n"]
+
+[resource]
+Label/font_sizes/font_size = 90
+Label/styles/normal = ExtResource("1_6gf4n")
